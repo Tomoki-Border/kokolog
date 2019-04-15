@@ -1,25 +1,86 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-12">
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
+      <section class="summary">
+        <div>
+          <h3>一週間のココログ  <span style="font-size: 32px;"><%= current_user.feed_0d_6d.average(:score).round(1) %></span></h3>
+        </div>
+        <div>
+          <input name="feed_scores_1week_json" type="hidden" value=<%= @feed_scores_1week_json %> class='feed_scores_1week_json'/>
+          <canvas id="ChartMood" width="100" height="50"></canvas>
+          <script>draw_graph();</script>
+        </div>
+      </section>
+      <% if @feed_today.count==0 %>
       <section class="micropost_form">
+        <h3>今日のココログ</h3>
         <%= render 'shared/micropost_form' %>
       </section>
+      <% end %>
     </aside>
-    <div class="col-md-8">
-      <h3>Micropost Feed</h3>
+    <div class="col-md-12">
+      <h3>みんなのココログ</h3>
       <%= render 'shared/feed' %>
     </div>
   </div>
 <% else %>
-<div class="center jumbotron">
-  <h1>Welcome to kokolog</h1>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<div class="site-top">
+  <div class="site-top-image">
+    <img src="assets/logo_type2.png" alt="ココログのロゴ2" title="ココログのロゴ2">
+  </div>
+  <div class="site-top-message">
+    <p>メンタルヘルス専用SNS</p>
+    <p>累計ココログ数：<span class="big"><%= Micropost.all.count %></span><p>
+  </div>
+  <div class="site-top-about">
+    <div class="enter-to-about enter-to-about-right">
+      <a href="/about"></a>
+    </div>
+    <div class="enter-to-about">
+      <p>Our Story</p>
+    </div>
+  </div>
+</div>
+<div class="site-main">
+    <h1>一日一回、自分に話かけよう</h1>
+    <div style="text-align: center;">
+      <%= link_to "ココログに登録する", signup_path, class: "btn-flat-border btn-green" %>
+    </div>
+</div>
+<div class="site-bottom">
+    <h3>ココログでできること、わかること</h3>
+    <div class="site-bottom-concept">
+      <div class="site-bottom-concept-left">
+        <img src="assets/log.png" alt="心の状態を記録" title="記録">
+        <p>記録する</p>
+      </div>
+      <div class="site-bottom-concept-right">
+        <p>一日一回、自分の気持ちをスコア化するとともに、心に影響を与えた出来事を記録します。記録することで自分の心と向き合う習慣がつきます。</p>
+      </div>
+    </div>
+    <div class="site-bottom-concept">
+      <div class="site-bottom-concept-left">
+        <img src="assets/analyze.png" alt="心の状態をメモ" title="分析">
+        <p>自分を知る</p>
+      </div>
+      <div class="site-bottom-concept-right">
+        <p>最近の心の動きや心を浮き沈みさせる原因を把握します。自分が落ち込んでいるのか原因を知ることはストレスと向き合う上で非常に重要です。</p>
+      </div>
+    </div> 
+    <div class="site-bottom-concept">
+      <div class="site-bottom-concept-left">
+        <img src="assets/share.png" alt="心の状態をメモ" title="共有">
+        <p>分かち合う</p>
+      </div>
+      <div class="site-bottom-concept-right">
+        <p>自分の胸の内を他者と共有します。苦しい心をさらけ出すことで、心の負担を軽減しましょう。また、苦しいのは自分だけでないこともわかるでしょう。</p>
+      </div>   
+    </div> 
 </div>
 <% end %>

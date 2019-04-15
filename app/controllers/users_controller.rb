@@ -10,6 +10,54 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+
+    #本日から6日前までのスコア
+    if @user.feed_0d.count==0
+        @user_feed_score_today = 0
+    else
+        @user_feed_score_today = @user.feed_0d.last.score
+    end
+
+    if @user.feed_1d.count==0
+        @user_feed_score_yesterday = 0
+    else
+        @user_feed_score_yesterday = @user.feed_1d.last.score
+    end
+
+    if @user.feed_2d.count == 0
+        @user_feed_score_2days_ago = 0
+    else
+        @user_feed_score_2days_ago = @user.feed_2d.last.score
+    end     
+
+    if @user.feed_3d.count == 0
+        @user_feed_score_3days_ago = 0
+    else
+        @user_feed_score_3days_ago = @user.feed_3d.last.score
+    end   
+
+    if @user.feed_4d.count == 0
+        @user_feed_score_4days_ago = 0
+    else
+        @user_feed_score_4days_ago = @user.feed_4d.last.score
+    end  
+
+    if @user.feed_5d.count == 0
+        @user_feed_score_5days_ago = 0
+    else
+        @user_feed_score_5days_ago = @user.feed_5d.last.score
+    end  
+
+    if @user.feed_6d.count == 0
+        @user_feed_score_6days_ago = 0
+    else
+        @user_feed_score_6days_ago = @user.feed_6d.last.score
+    end  
+
+    #スコアを配列に入れ、JSに移動
+    @user_feed_scores_1week =[@user_feed_score_6days_ago,@user_feed_score_5days_ago,@user_feed_score_4days_ago,@user_feed_score_3days_ago,@user_feed_score_2days_ago,@user_feed_score_yesterday,@user_feed_score_today]
+    @user_feed_scores_1week_json = @user_feed_scores_1week.to_json.html_safe
+
   end
 
   def new

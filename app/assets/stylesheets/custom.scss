@@ -77,6 +77,15 @@ p {
   }
 }
 
+.navbar-inverse {
+  background-color:#32afa5;
+  border-color:#32afa5;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
 /* footer */
 
 footer {
@@ -284,5 +293,299 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* originals */
+
+/* 共通 */
+
+/* button */
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: .4s;
+    &:hover{
+      text-decoration: none;
+    }
+}
+
+.btn-pink {
+  color: #ff1493;
+  border: solid 2px #ff1493;
+  background-color: white;
+    &:hover{
+      background: #ff1493;
+      color: white;
+    }
+}
+
+.btn-green {
+  color: white;
+  border: solid 2px #32afa5;
+  background-color: #32afa5;
+    &:hover{
+      background: white;
+      color: #32afa5;
+    }
+}
+
+.btn-right{
+  float: right;  
+}
+
+.btn-short {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* LP */
+/* site-top */
+.site-top {
+  background-color: #32afa5;
+  margin-bottom: 10px;
+}
+.site-top:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.site-top-image {
+  width:25%;
+  float: left;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+} 
+.site-top-message {
+  p {
+    font-size:16px;
+  }
+  padding: 10px;
+  background-color: #32afa5;
+  color: #fbfbfb;
+  width: 75%;
+  float: left;
+}
+
+.site-top-about{
+  p {
+    margin:20px;
+  }
+}
+
+.enter-to-about {
+  float: right;
+  p{
+    margin:10px;
+    color: white;
+  }
+}
+.enter-to-about a  {
+  width: 50px;
+  height: 50px;
+  background-size:cover;
+  background: url("../assets/heart-icon-default.png") no-repeat;
+  display: block;
+  text-indent: -9999px;
+}
+.enter-to-about a:hover  {
+  background-image: url("../assets/heart-icon-hover.png");
+}
+.enter-to-about-right {
+  padding-right: 20px;
+}
+
+/* site-main */
+.site-main {
+  background-image: url("../assets/site-daily.jpg");
+  background-size:cover;
+  padding-top:75px;
+  padding-bottom:75px;
+  font-size: 16px;
+  h1{
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+} 
+
+/* site-bottom */
+.site-bottom {
+  background-color: #FCFCFC;
+  h3{
+    margin-top:10px; 
+    padding-top:10px;
+    padding-left:10px;
+  }
+}
+.site-bottom-concept {
+  margin-top:20px;
+  margin-bottom:20px;
+  h3 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #32afa5;  
+  }
+}
+
+.site-bottom-concept {
+  margin-bottom: 10px;
+}
+
+.site-bottom-concept:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.site-bottom-concept-left {
+  width:15% ;
+  margin-left:2.5%;
+  margin-right:2.5%;
+  float:left;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  p{
+    text-align: center;
+    font-weight: bold;
+    color: #4B4B4B;    
+  }
+}
+.site-bottom-concept-right {
+  width:80% ;
+  float:right;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+/* static */
+
+/*css radio02*/
+.radio02-input{
+  display: none;
+}
+.radio02-input + label{
+  padding-left: 20px;
+  position:relative;
+  margin-right: 20px;
+}
+.radio02-input + label::before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 50%;
+}
+.radio02-input:checked + label{
+  color: #009a9a;
+}
+.radio02-input:checked + label::after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  background: #009a9a;
+  border-radius: 50%;
+}
+
+/*radio button*/
+.field .radio_btn {
+  display: none;
+}
+.field .radio_btn {
+  display: none;
+}
+
+// チェックが入っていないとき
+.field .radio_btn + label {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: normal;
+  color: #888;
+  border: solid 1px #ff1493;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 3px 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+// チェックが入ったとき
+.field .radio_btn:checked + label {
+  color: #fff;
+  background-color: #ff1493;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/*Aboutページ*/
+.big {
+  font-size: 24px;
+}
+
+.about-kokolog{
+  p {
+    margin:20px;
+  }
+}
+
+/*ボタン一覧*/
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: .4s;
+    &:hover{
+      text-decoration: none;
+    }
+}
+
+.btn-pink {
+  color: #ff1493;
+  border: solid 2px #ff1493;
+  background-color: white;
+    &:hover{
+      background: #ff1493;
+      color: white;
+    }
+}
+
+.btn-green {
+  color: white;
+  border: solid 2px #32afa5;
+  background-color: #32afa5;
+    &:hover{
+      background: white;
+      color: #32afa5;
+    }
+}
+
+.btn-right{
+  float: right;  
+}
+
+.btn-short {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-width: 600px){
+  .container {
+    max-width: 600px;
   }
 }

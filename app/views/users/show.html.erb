@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-12">
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
@@ -11,10 +11,21 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-   <div class="col-md-8">
+   <div class="col-md-12">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <% if @user.feed_0d_6d.count !=0 %>
+      <div>
+        <h3>一週間のココログ  <span style="font-size: 32px;"><%= @user.feed_0d_6d.average(:score).round(1) %></span></h3>
+      </div>
+      <div>
+        <input name="feed_scores_1week_json" type="hidden" value=<%= @user_feed_scores_1week_json %> class='feed_scores_1week_json'/>
+
+        <canvas id="ChartMood" width="100" height="50"></canvas>
+        <script>draw_graph();</script>
+      </div>
+      <% end %>
+      <h3>みんなのココログ (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

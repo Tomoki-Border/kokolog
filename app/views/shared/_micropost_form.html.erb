@@ -1,9 +1,26 @@
+
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <div class="field-score">
+      Great - 
+      <%= f.radio_button :score, 5, class:"radio_btn", id: 'great' %>
+      <%= f.label 5, for: 'great' %>
+      <%= f.radio_button :score, 4, class:"radio_btn", id: 'good' %>
+      <%= f.label 4, for: 'good' %>
+      <%= f.radio_button :score, 3, class:"radio_btn", id: 'normal' %>
+      <%= f.label 3, for: 'normal' %>
+      <%= f.radio_button :score, 2, class:"radio_btn", id: 'bad' %>
+      <%= f.label 2, for: 'bad' %>
+      <%= f.radio_button :score, 1, class:"radio_btn", id: 'toobad' %>
+      <%= f.label 1, for: 'toobad' %>
+       - Too Bad      
+    </div>
+    <div class="field-text">
+    <%= f.text_area :content, placeholder: "今の気分を徒然なるままにお書きください" %>
+    </div>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Post", class: "btn-flat-border btn-green btn-short" %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>

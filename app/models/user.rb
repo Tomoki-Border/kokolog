@@ -101,20 +101,39 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  # パスワード再設定の期限が切れている場合はtrueを返す
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
+  #ユーザーの投稿を日付指定で取得する
+  #ユーザーの最新投稿を取得
+  def feed_0d
+    Micropost.where("user_id = ?", id).where(created_at: Time.zone.now.all_day)
   end
-
-  # ユーザーのステータスフィードを返す
-  def feed
-    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+  #ユーザーの1日前の投稿を取得
+  def feed_1d
+    Micropost.where("user_id = ?", id).where(created_at: 1.day.ago.all_day)
   end
-
-  # ユーザーをフォローする
-  def follow(other_user)
-    following << other_user
+  #ユーザーの2日前の投稿を取得
+  def feed_2d
+    Micropost.where("user_id = ?", id).where(created_at: 2.days.ago.all_day)
   end
+  #ユーザーの3日前の投稿を取得
+  def feed_3d
+    Micropost.where("user_id = ?", id).where(created_at: 3.days.ago.all_day)
+  end
+  #ユーザーの4日前の投稿を取得
+  def feed_4d
+    Micropost.where("user_id = ?", id).where(created_at: 4.days.ago.all_day)
+  end
+  #ユーザーの5日前の投稿を取得
+  def feed_5d
+    Micropost.where("user_id = ?", id).where(created_at: 5.days.ago.all_day)
+  end
+  #ユーザーの6日前の投稿を取得
+  def feed_6d
+    Micropost.where("user_id = ?", id).where(created_at: 6.days.ago.all_day)
+  end
+  #ユーザーの1週間分の投稿を取得
+  def feed_0d_6d
+    Micropost.where("user_id = ?", id).where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day)
+  end  
 
   private
 
