@@ -16,7 +16,11 @@
     <% if @user.microposts.any? %>
       <% if @user.feed_0d_6d.count !=0 %>
       <div>
-        <h3>一週間のココログ  <span style="font-size: 32px;"><%= @user.feed_0d_6d.average(:score).round(1) %></span></h3>
+          <% if @user.feed_0d_6d.average(:score).nil? %>
+          <h3>一週間のココログ  <span style="font-size: 32px;">0.0  </span></h3>
+          <% else %>
+          <h3>一週間のココログ  <span style="font-size: 32px;"><%= @user.feed_0d_6d.average(:score).round(1) %></span></h3>          
+          <% end %>
       </div>
       <div>
         <input name="feed_scores_1week_json" type="hidden" value=<%= @user_feed_scores_1week_json %> class='feed_scores_1week_json'/>
