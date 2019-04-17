@@ -9,8 +9,8 @@
       </section>
       <section class="summary">
         <div>
-          <% if current_user.feed_0d_6d.average(:score).round(1)==0 %>
-          <h3>一週間のココログ  <span style="font-size: 32px;">0.0</span></h3>
+          <% if current_user.feed_0d_6d.average(:score).nil? %>
+          <h3>一週間のココログ  <span style="font-size: 32px;">0.0  </span></h3>
           <% else %>
           <h3>一週間のココログ  <span style="font-size: 32px;"><%= current_user.feed_0d_6d.average(:score).round(1) %></span></h3>          
           <% end %>
