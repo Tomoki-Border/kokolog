@@ -1,9 +1,9 @@
-<h1>kokolog</h1>
+<h1>ココログより</h1>
 
-<p>Hi <%= @user.name %>,</p>
+<p>こんにちは <%= @user.name %> さん</p>
 
 <p>
-Welcome to kokolog! Click on the link below to activate your account:
+ココログへようこそ! リンクをクリックして、アカウントを有効化しましょう。
 </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
